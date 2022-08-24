@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        body {
+            /* margin: 0; */
+            padding: 0;
+
+        }
+
+        .ghost {
+            background-image: url(./img/ghost/bg1.jpg);
+            width: 99vw;
+            height: 99vh;
+            font-size: 2rem;
+            color: #eee;
+            text-align: center;
+            /* margin-top: 0; */
+            padding: 10px;
+        }
+
+        p {
+            font-size: 48px;
+            margin-bottom: 16px auto;
+        }
+
+        .timeline {
+            text-align: center;
+            margin: 41px auto;
+            height: 6px;
+            width: 90vw;
+            background-color: #999;
+            border-radius: 5px;
+            box-shadow: 1px 1px crimson;
+        }
+
+        span {
+            display: block;
+            font-size: 30px;
+        }
+
+        span:hover {
+            color: crimson;
+            text-shadow: 1px 1px black;
+        }
+
+        i {
+            color: #AAA;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-around;
+            width: 80vw;
+            height: 35vh;
+            text-align: center;
+            margin-left: 150px;
+        }
+
+        .down {
+            display: flex;
+            justify-content: space-around;
+            width: 78vw;
+            height: 35vh;
+            margin-left: 18px;
+            margin-top: -94px;
+        }
+
+        .time1 {
+
+            width: 200px;
+            height: 200px;
+        }
+
+        img {
+            object-fit: contain;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            transform: scale(1, 1);
+            transition: all 1s ease-out;
+            filter: saturate(.2);
+            cursor: pointer;
+        }
+
+        .time1>img:hover {
+            transform: scale(1.2, 1.2);
+            filter: saturate(1.2);
+            cursor: pointer;
+        }
+
+        li {
+            font-size: 4rem;
+            margin-left: 40px;
+            /* color: rgb(69, 0, 0); */
+        }
+
+        li:hover {
+            color: crimson;
+        }
+
+        .modal-header {
+
+            margin: 0;
+        }
+
+        .modal-content {
+            background-image: url(./img/ghost/bg.jpg);
+
+        }
+
+        .modal-body {
+            margin-top: -18px;
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .modalimg {
+            margin-top: 28px;
+            width: 320px;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .content {
+            padding: 26px;
+            font-size: 1.5rem;
+        }
+
+        #ghoModalLabel {
+            font-weight: bold;
+            font-size: 3rem;
+            text-shadow: 1px 1px #333;
+            color: crimson;
+            margin-left: 90px;
+        }
+
+        p3 {
+            font-size: 1.6rem;
+            color: white;
+            background-color: #333;
+            padding: 0 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ghost">
+        <!-- <i class="fa-solid fa-ghost"></i> <i class="fa-brands fa-snapchat"></i> -->
+        <p>台灣民間鬼怪傳奇</p>
+
+        <div class="top">
+
+            <div class="time1">
+                <span>1887年</span>
+                <img src="./img/ghost/1887-陳守娘.png" alt="" data-toggle="modal" data-target="#ghoModal-chen">
+                <li></li>
+            </div>
+
+            <div class="time1">
+                <span>1936年</span>
+                <img src="./img/ghost/1936-魔神仔.png" alt="" data-toggle="modal" data-target="#ghoModal-mo">
+                <li></li>
+            </div>
+
+            <div class="time1">
+                <span>1965年</span>
+                <img src="./img/ghost/1965-日月潭白鹿.png" alt="" data-toggle="modal" data-target="#ghoModal-deer">
+                <li></li>
+            </div>
+
+        </div>
+
+
+        <div class="timeline"> </div>
+
+        <div class="down">
+            <div class="time1">
+                <li></li>
+                <span>1685年</span>
+                <img src="./img/ghost/1685-林投姐.png" alt="" data-toggle="modal" data-target="#ghoModal-lin">
+            </div>
+
+            <div class="time1">
+                <li></li>
+                <span>1890年</span>
+                <img src="./img/ghost/1890-金魅.png" alt="" data-toggle="modal" data-target="#ghoModal-jin">
+            </div>
+
+            <div class="time1">
+                <li></li>
+                <span>1952年</span>
+                <img src="./img/ghost/1952-貓將軍.png" alt="" data-toggle="modal" data-target="#ghoModal-catgen">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal 陳守娘-->
+    <div class="modal fade" id="ghoModal-chen">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ghoModalLabel">陳守娘</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="">
+                        <img class="modalimg" src="./img/ghost/1887-陳守娘.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <p3>起源小故事</p3>
+                        <br>
+                        「陳守娘大戰廣澤尊王」是清代府城三大奇案之一，據傳陳守娘在夫婿早逝後決定守節，但婆婆和小姑受到縣府衙署的幕賓金錢利誘，決定將守娘改嫁。沒想到守娘抵死不從，遂被婆婆和小姑綁在長椅上，用尖錐刺傷陰部，守娘最終因不堪折磨，暴斃死亡。
+                        守娘死後，府城各地夜半聽見喊聲不絕，仕紳為了地方安寧，恭請廣澤尊王出馬解決。雙方大戰數百回合後，守娘為了避免濫殺無辜，提出條件，希望能入節孝祠奉祀，表明自己守節心志，才平息這場風波。
+                        <br>
+                        <p3>出沒地區</p3>
+                        <br>
+                        台南
+                        <br>
+                        <p3>祭祀地點</p3>
+                        <br>
+                        一、台南孔廟
+                        全台首座孔子廟，一度是全台童生入學之所，號稱「全台首學」，西側為節孝祠、孝子祠。陳守娘過世後，牌位至今仍在節孝祠供奉。
+                        <br>
+                        二、辜婦媽廟
+                        為祭祀丈夫早逝，仍孝順公婆、將夫婿側室孩子視如己出，並一生守節的辜林氏的廟宇。相傳陳守娘從小在附近生活，耳濡目染之下，成為貞節觀念強烈的女子。
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal 陳守娘-->
+    <div class="modal fade" id="ghoModal-lin">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ghoModalLabel">林投姐</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="">
+                        <img class="modalimg" src="./img/ghost/1685-林投姐.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <p3>起源小故事</p3>
+                        <br>
+                        講到台灣女鬼，許多人會想到清代府城三大奇案之一的「林投姐」。
+                        相傳有名台南女子和泉州商人成親後，男子帶著兩人積蓄回到中國，便再也沒有回來，經過多年等待，女子意識到自己被無情拋棄，遂自縊於林投樹，自此之後，當地民眾就流傳在林投樹林間，時常能看見披頭散髮的女子在遊蕩。
+                        為了地方安寧，台南仕紳集資建造一間小廟奉祀，林投姐的魂魄才不再出現；也因為林投姐的故事過於悲慘，後人還為她編撰化身厲鬼，前往中國復仇的橋段。
+                        <br>
+                        <p3>出沒地區</p3>
+                        <br>
+                        台南
+                        <br>
+                        <p3>尋妖之旅</p3>
+                        <br>
+                        根據《臺灣風俗誌》記載，後人建造的林投姐祠，位於台南火車站周遭、「里見醫院」附近一帶的「凹地」內，那裡當時種滿了林投，直到日治時期為了開墾才夷為平地。
+                        里見醫院為當時台南署立醫院院長里見四郎，晚年開設的私人醫院，可惜在歷史資料中無法得知正確位置，但過去民族二路是條大水溝，凹地在水溝兩側，從此可推測林投姐祠應該就在附近。
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 魔神仔-->
+    <div class="modal fade" id="ghoModal-mo">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ghoModalLabel">魔神仔</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="">
+                        <img class="modalimg" src="./img/ghost/1936-魔神仔.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <p3>起源小故事</p3>
+                        <br>
+                        台灣鄉野傳說中，「魔神仔」大概是最常被提及的妖怪，據說祂身材矮小、全身黑毛，棲息於山區伺機而動。人如果被魔神仔「牽去」，被發現時大多呈現精神恍惚的狀態，記不得失蹤期間發生什麼事情，又或者只記得「被請吃大餐」，實際上嘴裡塞滿的卻是泥土、蚯蚓、牛糞等穢物。<br>
+                        而根據研究，魔神仔經常出沒地點為北部山區，包括士林「魔神仔溝」、陽明山「魔神仔古道」、南港「魔神仔硿」、汐止「毛神仔山」以及平溪「魔神仔洞」，這些地方因為過去經常有人失蹤，當地人盛傳魔神仔出沒，因此被冠上名號。
+                        <br>
+                        <p3>出沒地區</p3>
+                        <br>
+                        台北、新北山區
+                        <br>
+                        <p3>尋妖之旅</p3>
+                        <br>
+                        一、南港魔神仔硿
+                        根據《尋妖誌》一書，連接南港與石碇的北32鄉道，有個叫「魔神仔硿」的地方。作者實際走訪，一路鬱鬱蒼蒼、祖墳林立，儘管沒見到魔神仔，也充斥著毛骨悚然的恐怖氛圍。
+                        <br>
+                        二、平溪魔神仔洞
+                        「魔神仔洞」位於菁桐古道，從菁桐坑登山口開始，約走半小時路程就能抵達，根據當地人表示，洞穴其實是早期礦業發達時，用來運煤的輕便車道，後來有人將骨灰放在洞裡，才會有靈異流言。
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 白鹿-->
+    <div class="modal fade" id="ghoModal-deer">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ghoModalLabel">白鹿</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="">
+                        <img class="modalimg" src="./img/ghost/1965-日月潭白鹿.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <p3>起源小故事</p3>
+                        <br>
+                        位於南投的日月潭，從空中看下去就像台灣的心臟，而居住於日月潭邊的邵族有個美麗的傳說，相傳祖先有次打獵時看見一隻白鹿，便一路追逐牠至日月潭邊，這時白鹿突然跳入潭中，族人本來沮喪，觀望四周後驚覺此處山明水秀、物產豐碩，便捕獵充飢。<br>
+                        當晚，白鹿化身為白衣女子，托夢給一名邵族長者，表示因為日月潭能農耕漁獵，才引領邵族人前來。隔日，長者將夢境告訴旁人，一行人便回去稟告頭目，頭目決定舉族搬遷至日月潭拉魯島附近，白鹿也成為邵族神聖的象徵。
+                        <br>
+                        <p3>出沒地區</p3>
+                        <br>
+                        南投日月潭
+                        <br>
+                        <p3>尋妖之旅</p3>
+                        <br>
+                        一、士亭仔步道
+                        土亭仔（Puzi）是傳說中白鹿下水之地，也是邵族石印社遺址所在，現在則是石姓氏族祖靈祭地點。土亭仔步道沿途設置解說牌，提供邵族文化解說，步道盡頭的眺望台可欣賞三面山水景色。
+                        <br>
+                        二、拉魯島
+                        位於日月潭的拉魯島（Lalu），是邵族祭祀、求巫的重要場所，因其神聖性，目前禁止遊客登島。若想眺望拉魯島面貌，可從水社頭碼頭乘船前往玄光碼頭，途中近距離駛經拉魯島時眺望最為清楚。
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 金魅-->
+    <div class="modal fade" id="ghoModal-jin">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ghoModalLabel">金魅</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="">
+                        <img class="modalimg" src="./img/ghost/1890-金魅.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <p3>起源小故事</p3>
+                        <br>
+                        日治時期出刊的《民俗臺灣》中，記載了一個名為「金魅」的妖怪，祂原本是名有錢人家的查某嫺－金綢，被主人毒打致死後，變成了吃人妖怪，心生畏懼的主人因此和祂達成協議，除了將祂改名為「金魅」立牌位祭拜，每年還會獻祭一名活人，換取祂繼續留在家中工作。<br>
+                        據說金魅十分愛乾淨，因此日治時期前，許多旅館都會偷偷供養金魅，讓金魅替他們打掃，如果想得知一間旅館有沒有養金魅，只要朝大門吐口水，看看口水有沒有馬上消失，就能得知是不是愛乾淨的金魅，隨即處理掉了。
+                        <br>
+                        <p3>出沒地區</p3>
+                        <br>
+                        旅館
+                        <br>
+                        <p3>尋妖之旅</p3>
+                        <br>
+                        無
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 貓將軍-->
+    <div class="modal fade" id="ghoModal-catgen">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ghoModalLabel">貓將軍</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="">
+                        <img class="modalimg" src="./img/ghost/1952-貓將軍.jpg" alt="">
+                    </div>
+                    <div class="content">
+                        <p3>起源小故事</p3>
+                        <br>
+                        宜蘭頭城當地有個詭譎傳說，相傳1875年左右，有隻山貓妖怪在福德坑一帶作亂，到處殺害家畜、散佈疾病，村民們儘管四處求神問佛，也無法解決，相當困擾。<br>
+                        就在村民束手無策之際，山貓妖怪透過乩童傳話：「要我安安份份可以，但你們要為我建一間廟，定期祭拜，那我就願意成為這個村莊的守護神」，村民們聽聞後便照辦，在當地建造一座天神宮，山貓妖怪也信守承諾，不再禍害百姓。
+                        <br>
+                        <p3>出沒地區</p3>
+                        <br>
+                        宜蘭頭城
+                        <br>
+                        <p3>祭祀地點</p3>
+                        <br>
+                        將軍廟<br>
+                        供奉貓將軍的天神宮，後來因為土匪作亂被燒燬，沒想到多年以後，居民在福德坑溪下游撿到貓將軍神像，便在頭城新建里新興路重新建造一座「將軍廟」，現在也是台灣唯一一間有貓神信仰的廟宇！
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // $(".time1").mouseover(function(){
+        //     $(this).css("color","red")
+        //     // $("img").css("transform: scale(1.2,1.2)");
+        //     // $("span").css("color: red", "text-shadow: 1px 1px black");
+        // })
+        // $('#exampleModal').on('show.bs.modal', function (event) {
+        //     var button = $(event.relatedTarget) // Button that triggered the modal
+        //     var recipient = button.data('whatever') // Extract info from data-* attributes
+        //     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        //     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        //     var modal = $(this)
+        //     modal.find('.modal-title').text('New message to ' + recipient)
+        //     modal.find('.modal-body input').val(recipient)
+        // })
+    </script>
+</body>
+
+</html>
